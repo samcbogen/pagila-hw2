@@ -12,7 +12,7 @@
  */
 
 select distinct(title) from film f
-inner join inventori i on f.film_id = i.film_id
+inner join inventory i on f.film_id = i.film_id
 where f.film_id not in (
     select film_id from inventory i
     inner join rental r on i.inventory_id = r.inventory_id

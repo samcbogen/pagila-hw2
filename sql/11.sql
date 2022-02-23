@@ -4,7 +4,7 @@
 
 select distinct ("Actor Name") from 
 (
-    select unnest(special_features) as special_feature, frist_name || ' ' || last_name as "Actor Name"
+    select unnest(special_features) as special_feature, first_name || ' ' || last_name as "Actor Name"
     from film f
     inner join film_actor fa on f.film_id = fa.film_id
     inner join actor a on fa.actor_id = a.actor_id
