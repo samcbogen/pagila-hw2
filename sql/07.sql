@@ -10,3 +10,16 @@
  * This can be solved either with a LEFT JOIN or with the NOT IN operator.
  * You may choose whichever solution makes the most sense to you.
  */
+
+select distinct(title) from film f
+inner join inventori i on f.film_id = i.film_id
+where f.film_id not in (
+    select film_id from inventory i
+    inner join rental r on i.inventory_id = r.inventory_id
+    inner join customer cu on cu.customer_id = r.customer_id
+    inner join address a on a.address_id = cu.address_id
+    inner join city ci on ci.city_id = a.city_id
+    inner join country co on co.country_id = ci.country_id
+    where co.country = 'United States'
+)
+order by title;
